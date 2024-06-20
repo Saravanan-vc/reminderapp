@@ -6,7 +6,13 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 class textField extends StatelessWidget {
   final String label;
   final int lines;
-  const textField({super.key, required this.label, required this.lines});
+  dynamic controller;
+  textField({
+    super.key,
+    required this.label,
+    required this.lines,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +25,7 @@ class textField extends StatelessWidget {
             label: Text(label),
             focusedBorder: OutlineInputBorder()),
         maxLines: lines,
+        controller: controller,
       ),
     );
   }
