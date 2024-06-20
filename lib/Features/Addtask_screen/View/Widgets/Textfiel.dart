@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, camel_case_types, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
