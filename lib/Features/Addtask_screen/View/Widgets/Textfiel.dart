@@ -20,10 +20,11 @@ class textField extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         decoration: InputDecoration(
-            enabled: T,
-            enabledBorder: OutlineInputBorder(),
-            label: Text(label),
-            focusedBorder: OutlineInputBorder()),
+          label: Text(label),
+          enabled: T,
+          enabledBorder: OutlineInputBorder(),
+          focusedBorder: OutlineInputBorder(),
+        ),
         maxLines: lines,
         controller: controller,
       ),

@@ -8,9 +8,13 @@ class Controller extends GetxController {
   FirebaseFirestore fireBaseFirestore = FirebaseFirestore.instance;
   late CollectionReference Taskcollection;
 
+  //creating a list to get a data from databases
+  List<Task> Taskslist = [];
+
   @override
-  void onInit() {
+  Future<void> onInit() async {
     Taskcollection = fireBaseFirestore.collection("ReminderTask");
+    await getdata();
     super.onInit();
   }
 
@@ -32,6 +36,32 @@ class Controller extends GetxController {
     }
   }
 
+  //Delet the data from databases
+  Deletedata(String id) async {
+    try {
+      await Taskcollection.doc(id).delete();
+      getdata();
+    } catch (e) {
+      Get.snackbar("Error", e.toString());
+    }
+  }
+
+  //geting data from databases
+  getdata() async {
+    try {
+      QuerySnapshot Tasksnapshort = await Taskcollection.get();
+      List<Task> collectdata = Tasksnapshort.docs
+          .map((doc) => Task.fromJson(doc.data() as Map<String, dynamic>))
+          .toList();
+      Taskslist.clear();
+      Taskslist.assignAll(collectdata);
+    } catch (e) {
+      Get.snackbar("Eroor", e.toString());
+    } finally {
+      update();
+    }
+  }
+
   //add the task to server
   Addtask() {
     try {
@@ -48,6 +78,12 @@ class Controller extends GetxController {
     } catch (e) {
       Get.snackbar(e.toString(), "Failed");
       print(e);
+    } finally {
+      update();
     }
+    getdata();
+    Taskcontroller.clear();
+    Datecontroller.clear();
+    Discriptincontroller.clear();
   }
 }

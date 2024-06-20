@@ -1,24 +1,35 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:reminderapp/Features/Addtask_screen/View_Model/controller.dart';
 
 class listView_card extends StatelessWidget {
   const listView_card({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 1,
-      itemBuilder: (context, index) => Card(
-        child: ListTile(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Task"),
-              Text("Data"),
-            ],
+    return GetBuilder<Controller>(
+      builder: (logic) => ListView.builder(
+        itemCount: logic.Taskslist.length,
+        itemBuilder: (context, index) => Dismissible(
+          key: Key(logic.Taskslist[index].id.toString()),
+          child: Card(
+            child: ListTile(
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(logic.Taskslist[index].task ?? ''),
+                  Text(logic.Taskslist[index].Date ?? ''),
+                ],
+              ),
+              subtitle: Text(logic.Taskslist[index].Description ?? ''),
+            ),
           ),
-          subtitle: Text("Description"),
+          onDismissed: (direction) {
+            logic.Deletedata(logic.Taskslist[index].id.toString());
+          },
         ),
       ),
     );
