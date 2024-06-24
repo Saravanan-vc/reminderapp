@@ -39,6 +39,7 @@ dependencies:
   get: ^4.6.6
   cloud_firestore: ^5.0.1
   json_annotation: ^4.9.0
+  firebase_cloud_messaging_flutter: ^1.0.6
   
 
 dev_dependencies:

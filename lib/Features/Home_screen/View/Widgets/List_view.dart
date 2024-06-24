@@ -15,6 +15,9 @@ class listView_card extends StatelessWidget {
         itemBuilder: (context, index) => Dismissible(
           key: Key(logic.Taskslist[index].id.toString()),
           child: Card(
+            // color: logic.color(
+            //   int.parse(logic.Taskslist[index].Date!.replaceAll("-", '')),
+            // ),
             child: ListTile(
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,6 +30,9 @@ class listView_card extends StatelessWidget {
             ),
           ),
           onDismissed: (direction) {
+            print(int.parse(logic.Taskslist[index].Date!.replaceAll("-", '')));
+            print(int.parse(
+                DateTime.now().toString().split(" ")[0].replaceAll("-", '')));
             logic.Deletedata(logic.Taskslist[index].id.toString());
           },
         ),
