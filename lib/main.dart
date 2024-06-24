@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:reminderapp/Features/Addtask_screen/Model/options.dart';
 import 'package:reminderapp/Features/Addtask_screen/View_Model/controller.dart';
-import 'package:reminderapp/Features/Home_screen/View/pages/Home_Screen.dart';
+import 'package:reminderapp/Features/Splash_Screen/View/Pages/Splash_Screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: homeScreen(),
+      home: SplashScreenl(),
     );
   }
 }
