@@ -87,19 +87,4 @@ class Controller extends GetxController {
     Discriptincontroller.clear();
   }
 
-  //color for card
-  // color (int initialdate) async {
-  //   int currentdate =
-  //       int.parse(DateTime.now().toString().split(" ")[0].replaceAll("-", ''));
-
-  //   try {
-  //     if (currentdate >= await initialdate) {
-  //       return Colors.green;
-  //     } else {
-  //       return Colors.red;
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
 }

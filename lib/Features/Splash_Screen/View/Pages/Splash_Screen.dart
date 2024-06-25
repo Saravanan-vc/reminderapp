@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:reminderapp/Features/Home_screen/View/pages/Home_Screen.dart';
+import 'package:reminderapp/Features/Login_Screen/View/Pages/Login_Screen.dart';
 
 class SplashScreenl extends StatefulWidget {
   const SplashScreenl({super.key});
@@ -21,7 +22,7 @@ class _SplashScreenlState extends State<SplashScreenl> {
       Duration(seconds: 3),
       () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => homeScreen(),
+          builder: (context) => phoneLogin(),
         ),
       ),
     );
@@ -32,7 +33,10 @@ class _SplashScreenlState extends State<SplashScreenl> {
     return Scaffold(
       body: Center(
           child: Container(
-        child: Text("Splash_Screen"),
+        child: Image.asset(
+          "Assets/splash.webp",
+          scale: 2,
+        ),
       )),
     );
   }
